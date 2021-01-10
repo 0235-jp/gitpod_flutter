@@ -1,0 +1,30 @@
+FROM gitpod/workspace-base:latest
+SHELL ["/bin/bash", "-c"]
+
+USER root
+
+# Update system
+RUN apt-get update && apt-get upgrade -y
+
+# Install dart
+RUN curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && curl -fsSL https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list \
+    && install-packages build-essential dart libkrb5-dev gcc make gradle android-tools-adb android-tools-fastboot
+
+USER gitpod
+
+ARG FLUTTER_VERSION
+
+# Install Flutter sdk
+ENV FLUTTER_HOME=/home/gitpod/flutter
+RUN cd /home/gitpod \
+    && wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz \
+    && tar -xvf flutter*.tar.xz \
+    && rm -f flutter*.tar.xz
+RUN flutter/bin/flutter precache
+
+# add Flutter PATH
+RUN echo 'export PATH="$PATH:/home/gitpod/flutter/bin"' >> /home/gitpod/.bashrc
+
+# Install Firebase CLI
+RUN curl -sL https://firebase.tools | bash
