@@ -1,0 +1,15 @@
+
+image: kitproject/gitpod-flutter-android:lastest
+tasks:
+  - init: >
+      flutter pub get
+    command: >
+      flutter run --debug -d web-server --web-port=8080 --web-hostname=0.0.0.0 --target="lib/main.dart" -v
+ports:
+  - port: 8080
+    onOpen: open-preview
+
+vscode:
+  extensions:
+    - dart-code.flutter
+    - dart-code.dart-code
