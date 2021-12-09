@@ -1,11 +1,11 @@
 #!/bin/bash
 
-export FLUTTER_VERSION=2.5.3
+export FLUTTER_VERSION=2.8.0
 export ANDROID_SDK_VERSION=7583922
 export ANDROID_NDK_VERSION=r23b
 export BUILD_TOOLS_VERSION=31.0.0
 export PLATFORMS_VERSION=android-31
 export SOURCES_VERSION=android-31
 export IDEA_VERSION=2021.3
-export FLUTTER_PLUGIN_URL="https://plugins.jetbrains.com/files/9212/148198/flutter-intellij.zip?updateId=148198&pluginId=9212&family=INTELLIJ"
+export FLUTTER_PLUGIN_URL="https://plugins.jetbrains.com/files/9212/149353/flutter-intellij.zip?updateId=149353&pluginId=9212&family=INTELLIJ"
 export DART_PLUGIN_URL="https://plugins.jetbrains.com/files/6351/145984/Dart-213.5744.122.zip?updateId=145984&pluginId=6351&family=INTELLIJ"
