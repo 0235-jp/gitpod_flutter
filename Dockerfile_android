@@ -13,7 +13,6 @@ RUN apt-get update && apt-get upgrade -y
 USER gitpod
 
 ARG ANDROID_SDK_VERSION
-ARG ANDROID_NDK_VERSION
 ARG BUILD_TOOLS_VERSION
 ARG PLATFORMS_VERSION
 ARG SOURCES_VERSION
@@ -22,21 +21,14 @@ ARG SOURCES_VERSION
 ENV ANDROID_HOME=/home/gitpod/android-sdk
 RUN cd ~ && \
     wget -O android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip && \
-    unzip -q -d android-sdk android-sdk.zip && \
+    mkdir -p ${ANDROID_HOME}/cmdline-tools && \
+    unzip -q android-sdk.zip -d ${ANDROID_HOME}/cmdline-tools/ && \
     rm -rf android-sdk.zip && \
-    mkdir ~/.android && \
-    touch ~/.android/repositories.cfg && \
-    cd ${ANDROID_HOME}/cmdline-tools/bin && \
-    yes | ./sdkmanager --licenses --sdk_root=$ANDROID_HOME && \
-    ./sdkmanager "build-tools;${BUILD_TOOLS_VERSION}" "platforms;${PLATFORMS_VERSION}" "sources;${SOURCES_VERSION}" "extras;android;m2repository" --sdk_root=$ANDROID_HOME
-
-# Install Android NDK
-ENV ANDROID_NDK_HOME=/home/gitpod/android-ndk
-RUN cd ~ && \
-    wget -O android-ndk.zip https://dl.google.com/android/repository/android-ndk-${ANDROID_NDK_VERSION}-linux.zip && \
-    unzip -q android-ndk.zip && \
-    mv ./android-ndk-${ANDROID_NDK_VERSION} ${ANDROID_NDK_HOME} && \
-    rm -rf android-ndk.zip
+    mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest && \
+    cd ${ANDROID_HOME}/cmdline-tools/latest/bin && \
+    yes | ./sdkmanager --licenses && \
+    ./sdkmanager "build-tools;${BUILD_TOOLS_VERSION}" "platforms;${PLATFORMS_VERSION}" "sources;${SOURCES_VERSION}" "extras;android;m2repository"
 
 # add Android PATH
-RUN echo 'export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_NDK_HOME}:$PATH' >>~/.bashrc
+RUN echo 'export PATH=/home/gitpod/android-sdk/cmdline-tools/latest/bin:/home/gitpod/android-sdk/tools:/home/gitpod/android-sdk/platform-tools:/home/gitpod/android-sdk:$PATH' >>~/.bashrc
+RUN echo 'export ANDROID_HOME=/home/gitpod/android-sdk' >>~/.bashrc
