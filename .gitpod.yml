@@ -13,3 +13,10 @@ vscode:
   extensions:
     - dart-code.flutter
     - dart-code.dart-code
+jetbrains:
+  intellij:
+    prebuilds:
+      version: stable
+    plugins:
+      - io.flutter
+      - Dart
