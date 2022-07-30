@@ -4,7 +4,9 @@ tasks:
   - init: >
       flutter pub get
     command: >
-      flutter run --debug -d web-server --web-port=8080 --web-hostname=0.0.0.0 --target="lib/main.dart" -v
+      flutter run --debug -d web-server --web-port=8080 --web-hostname=0.0.0.0 --target="lib/ma    prebuilds:
+19
+      version: stablein.dart" -v
 ports:
   - port: 8080
     onOpen: open-preview
@@ -15,8 +17,6 @@ vscode:
     - dart-code.dart-code
 jetbrains:
   intellij:
-    prebuilds:
-      version: stable
     plugins:
       - io.flutter
       - Dart
