@@ -9,7 +9,3 @@ docker push kitproject/gitpod-flutter-base:lastest
 docker push kitproject/gitpod-flutter-base:v${FLUTTER_VERSION/+/-}
 docker push kitproject/gitpod-flutter-android:lastest
 docker push kitproject/gitpod-flutter-android:v${FLUTTER_VERSION/+/-}
-docker push kitproject/gitpod-flutter-idea:lastest
-docker push kitproject/gitpod-flutter-idea:v${FLUTTER_VERSION/+/-}
-docker push kitproject/gitpod-flutter-full:lastest
-docker push kitproject/gitpod-flutter-full:v${FLUTTER_VERSION/+/-}
