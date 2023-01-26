@@ -15,6 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run a one-line script
-        run: ./build_docker.sh
+      - name: Run build_docker.sh
+        run: ./build_docker.sh && ./push_docker
 
