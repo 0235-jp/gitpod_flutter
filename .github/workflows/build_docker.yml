@@ -13,8 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+    - shell: bash
+      env:
+        DOCKER_USER_NAME: ${{ secrets.dockerUserName }}
+        DOCKER_PASSWORD: ${{ secrets.dockerPassword }}
+      
+    - uses: actions/checkout@v3
 
-      - name: Run build_docker.sh
-        run: ./build_docker.sh && ./push_docker.sh
+    - name: Run build_docker.sh
+      run: ./push_docker.sh
 
