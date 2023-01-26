@@ -16,5 +16,5 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Run build_docker.sh
-        run: ./build_docker.sh && ./push_docker
+        run: ./build_docker.sh && ./push_docker.sh
 
