@@ -2,9 +2,7 @@ name: Build Docker
 
 on:
   push:
-    branches: [ "main2" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ "create-build-docker" ]
 
   workflow_dispatch:
 
