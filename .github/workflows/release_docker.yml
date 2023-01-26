@@ -1,0 +1,20 @@
+name: Release Docker
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+build:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v3
+     - name: Run build_docker.sh
+       run: ./build_docker.sh
+     - name: Run push_docker.sh
+       env:
+          DOCKER_USER_NAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+       run: ./push_docker.sh

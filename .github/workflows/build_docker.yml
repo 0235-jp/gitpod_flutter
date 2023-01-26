@@ -1,0 +1,15 @@
+name: Build Docker
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v3
+     - name: Run build_docker.sh
+       run: ./build_docker.sh
