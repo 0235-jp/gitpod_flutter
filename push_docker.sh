@@ -3,7 +3,7 @@ cd `dirname $0`
 
 source version
 
-docker login --username $DOCKER_USER_NAME --password $DOCKER_PASSWORD
+echo $DOCKER_PASSWORD | docker login --username $DOCKER_USER_NAME --password-stdin
 
 docker push kitproject/gitpod-flutter-base:lastest
 docker push kitproject/gitpod-flutter-base:v${FLUTTER_VERSION/+/-}
