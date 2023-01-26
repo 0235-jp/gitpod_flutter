@@ -14,8 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - shell: bash
+    - name: push docker
       env:
         DOCKER_USER_NAME: ${{ secrets.dockerUserName }}
         DOCKER_PASSWORD: ${{ secrets.dockerPassword }}
-      run: ./push_docker.sh
+      with:
+        command: ./push_docker.sh
