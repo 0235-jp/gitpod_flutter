@@ -18,5 +18,4 @@ jobs:
       env:
         DOCKER_USER_NAME: ${{ secrets.dockerUserName }}
         DOCKER_PASSWORD: ${{ secrets.dockerPassword }}
-      with:
-        command: ./push_docker.sh
+      run: ./push_docker.sh
