@@ -27,7 +27,7 @@ RUN cd ~ && \
     mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest && \
     cd ${ANDROID_HOME}/cmdline-tools/latest/bin && \
     yes | ./sdkmanager --licenses && \
-    ./sdkmanager "build-tools;${BUILD_TOOLS_VERSION}" "platforms;${PLATFORMS_VERSION}" "sources;${SOURCES_VERSION}" "extras;android;m2repository"
+    ./sdkmanager "tools" "platform-tools" "patcher;v4" "emulator" "build-tools;${BUILD_TOOLS_VERSION}" "platforms;${PLATFORMS_VERSION}"
 
 # add Android PATH
 RUN echo 'export PATH=/home/gitpod/android-sdk/cmdline-tools/latest/bin:/home/gitpod/android-sdk/tools:/home/gitpod/android-sdk/platform-tools:/home/gitpod/android-sdk:$PATH' >>~/.bashrc
