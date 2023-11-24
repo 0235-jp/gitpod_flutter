@@ -22,17 +22,11 @@ docker build --tag kitproject/gitpod-flutter-android:lastest \
              --tag kitproject/gitpod-flutter-android:stable \
              --tag kitproject/gitpod-flutter-android:v${FLUTTER_STABLE_VERSION/+/-} \
              --build-arg ANDROID_SDK_VERSION=$ANDROID_SDK_VERSION \
-             --build-arg BUILD_TOOLS_VERSION=$BUILD_TOOLS_VERSION \
-             --build-arg PLATFORMS_VERSION=$PLATFORMS_VERSION \
-             --build-arg SOURCES_VERSION=$SOURCES_VERSION \
              --no-cache \
              --file Dockerfile_android_stable .
 
 docker build --tag kitproject/gitpod-flutter-android:beta \
              --tag kitproject/gitpod-flutter-android:v${FLUTTER_BETA_VERSION/+/-} \
              --build-arg ANDROID_SDK_VERSION=$ANDROID_SDK_VERSION \
-             --build-arg BUILD_TOOLS_VERSION=$BUILD_TOOLS_VERSION \
-             --build-arg PLATFORMS_VERSION=$PLATFORMS_VERSION \
-             --build-arg SOURCES_VERSION=$SOURCES_VERSION \
              --no-cache \
              --file Dockerfile_android_beta .

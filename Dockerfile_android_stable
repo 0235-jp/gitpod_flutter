@@ -16,6 +16,7 @@ ARG ANDROID_SDK_VERSION
 
 # Install AndroidSDK
 ENV ANDROID_HOME=/home/gitpod/android-sdk
+ENV JAVA_HOME=/home/gitpod/.sdkman/candidates/java/current
 RUN cd ~ && \
     wget -O android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip && \
     mkdir -p ${ANDROID_HOME}/cmdline-tools && \
