@@ -1,5 +1,5 @@
-#!/bin/bash
+a#!/bin/bash
 
-export FLUTTER_STABLE_VERSION=3.19.4
+export FLUTTER_STABLE_VERSION=3.19.5
 export FLUTTER_BETA_VERSION=3.21.0-0.0.pre
 export ANDROID_SDK_VERSION=10406996
